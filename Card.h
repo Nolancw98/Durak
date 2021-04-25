@@ -12,8 +12,12 @@ class Card
     int getSuit();
     char getValue();
     string toString();
+    //friend bool operator< (const Card &c1, const Card &c2);
+    void setTrump();
+    bool isTrump();
   private:
     char suit;
     int value;
+    bool trump;
 };
 #endif

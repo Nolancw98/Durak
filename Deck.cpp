@@ -79,4 +79,13 @@ void Deck::setTrump()
 {
   Card trump = peekCard(0);
   trumpSuit = trump.getSuit();
+  for(int i = 0; i < getSize(); i++)
+  {
+    Card currentCard = peekCard(i);
+    if(currentCard.getSuit() == trumpSuit)
+    {
+      currentCard.setTrump();
+      cout << "Test";
+    }
+  }
 }

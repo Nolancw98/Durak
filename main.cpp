@@ -1,6 +1,7 @@
 #include <iostream>
 #include "Card.h"
 #include "Deck.h"
+#include "Hand.h"
 
 using namespace std;
 
@@ -32,12 +33,28 @@ int main()
   deck.setTrump();
   cout << "Trump Suit: " << deck.getTrump() << endl;
 
+  for(int i = 0; i < deck.getSize(); i++)
+  {
+    cout << deck.peekCard(i).toString() << endl;
+  }
+  cout << "Size after Shuffle: " << deck.getSize() << endl;
+
+  //Hand hand;
+  //hand.addCard(deck.draw());
+
+  
+
+
+  /*
+  //FULL DRAW
   for(int i = 0; i < 36; i++)
   {
     cout << deck.draw().toString() << endl;
   }
   cout << "Size after full draw " << deck.getSize() << endl;
+  */
+  
+  
+  
   return 0;
- 
-
 }
