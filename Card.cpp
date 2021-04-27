@@ -19,16 +19,8 @@ char Card::getValue()
 
 string Card::toString()
 {
-  return to_string(value) + suit + ", isTrump?: " + to_string(isTrump());
+  return to_string(value) + suit + "\tT: " + to_string(isTrump());
 }
-
-/*
-bool operator < (const Card c1, const Card c2)
-{
-  
-  return false;
-}
-*/
 
 void Card::setTrump()
 {
@@ -38,4 +30,56 @@ void Card::setTrump()
 bool Card::isTrump()
 {
   return trump;
+}
+
+/*
+std::less<Card>::operator (Card c1, Card c2); 
+{
+  if((c1.isTrump() && c2.isTrump()) || (!c1.isTrump() && !c2.isTrump()))
+    {
+      return c1.getValue() < c2.getValue();
+    }
+    else
+      return c2.isTrump();
+}
+*/
+
+bool operator<(Card &c1, Card &c2)
+{
+  if((c1.isTrump() && c2.isTrump()) || (!c1.isTrump() && !c2.isTrump()))
+  {
+    return c1.getValue() < c2.getValue();
+  }
+  else
+    return c2.isTrump();
+}
+
+bool operator>(Card &c1, Card &c2)
+{
+  if((c1.isTrump() && c2.isTrump()) || (!c1.isTrump() && !c2.isTrump()))
+  {
+    return c1.getValue() > c2.getValue();
+  }
+  else
+    return c1.isTrump();
+}
+
+bool operator<=(Card &c1, Card &c2)
+{
+  if((c1.isTrump() && c2.isTrump()) || (!c1.isTrump() && !c2.isTrump()))
+  {
+    return c1.getValue() <= c2.getValue();
+  }
+  else
+    return c2.isTrump();
+}
+
+bool operator>=(Card &c1, Card &c2)
+{
+  if((c1.isTrump() && c2.isTrump()) || (!c1.isTrump() && !c2.isTrump()))
+  {
+    return c1.getValue() >= c2.getValue();
+  }
+  else
+    return c1.isTrump();
 }

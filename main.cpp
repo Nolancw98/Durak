@@ -7,10 +7,22 @@ using namespace std;
 
 int main()
 {
-  //Card ace_of_hearts(14, 'H');
-  //cout << ace_of_hearts.toString() << endl;
+  /*
+  //Testing Friend Operator
+  Card c1(6, 'H');
+  c1.setTrump();
+  cout << c1.toString() << endl;
+
+  Card c2(14, 'S');
+  //c2.setTrump();
+  cout << c2.toString() << endl;
+
+  bool comparison = c1 < c2;
+  cout << comparison << endl;
+  */
 
   
+  //Main Testing Methods
   Deck deck;
   for(int i = 0; i < deck.getSize(); i++)
   {
@@ -39,8 +51,8 @@ int main()
   }
   cout << "Size after Shuffle: " << deck.getSize() << endl;
 
-  //Hand hand;
-  //hand.addCard(deck.draw());
+  Hand hand;
+  hand.addCard(deck.draw());
 
   
 

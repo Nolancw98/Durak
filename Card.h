@@ -12,9 +12,15 @@ class Card
     int getSuit();
     char getValue();
     string toString();
-    //friend bool operator< (const Card &c1, const Card &c2);
     void setTrump();
     bool isTrump();
+
+    //std::less<Card>::operator lessThan();
+    friend bool operator< (Card &c1, Card &c2);
+    friend bool operator> (Card &c1, Card &c2);
+    friend bool operator<= (Card &c1, Card &c2);
+    friend bool operator>= (Card &c1, Card &c2);
+
   private:
     char suit;
     int value;
