@@ -39,7 +39,8 @@ void Deck::shuffle()
   }
 }
 
-// 
+// Should only be used in shuffle()
+// To-Do Make private
 Card Deck::draw(int index)
 {
   vector<Card>::iterator it = deck.begin();
@@ -79,4 +80,14 @@ void Deck::setTrump()
 {
   Card trump = peekCard(0);
   trumpSuit = trump.getSuit();
+  
+  //Set all of the trump cards
+  vector<Card>::iterator i; 
+  for(i = deck.begin(); i != deck.end(); i++)
+  {
+    if((*i).getSuit() == trumpSuit)
+    {
+      (*i).setTrump();
+    }
+  }
 }

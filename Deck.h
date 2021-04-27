@@ -22,7 +22,7 @@ class Deck
     Card peekCard(int index);
     void setTrump();
   private:
-    int size;
+    //int size;
     char trumpSuit;
     vector<Card> deck;
 };
