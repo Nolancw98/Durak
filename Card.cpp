@@ -44,42 +44,42 @@ std::less<Card>::operator (Card c1, Card c2);
 }
 */
 
-bool operator<(Card &c1, Card &c2)
+const bool operator <(const Card &c1, const Card &c2)
 {
-  if((c1.isTrump() && c2.isTrump()) || (!c1.isTrump() && !c2.isTrump()))
+  if((c1.trump && c2.trump) || (!c1.trump && !c2.trump))
   {
-    return c1.getValue() < c2.getValue();
+    return c1.value < c2.value;
   }
   else
-    return c2.isTrump();
+    return c2.trump;
 }
 
-bool operator>(Card &c1, Card &c2)
+const bool operator >(const Card &c1, const Card &c2)
 {
-  if((c1.isTrump() && c2.isTrump()) || (!c1.isTrump() && !c2.isTrump()))
+  if((c1.trump && c2.trump) || (!c1.trump && !c2.trump))
   {
-    return c1.getValue() > c2.getValue();
+    return c1.value > c2.value;
   }
   else
-    return c1.isTrump();
+    return c1.trump;
 }
 
-bool operator<=(Card &c1, Card &c2)
+const bool operator <=(const Card &c1, const Card &c2)
 {
-  if((c1.isTrump() && c2.isTrump()) || (!c1.isTrump() && !c2.isTrump()))
+  if((c1.trump && c2.trump) || (!c1.trump && !c2.trump))
   {
-    return c1.getValue() <= c2.getValue();
+    return c1.value <= c2.value;
   }
   else
-    return c2.isTrump();
+    return c2.trump;
 }
 
-bool operator>=(Card &c1, Card &c2)
+const bool operator >=(const Card &c1, const Card &c2)
 {
-  if((c1.isTrump() && c2.isTrump()) || (!c1.isTrump() && !c2.isTrump()))
+  if((c1.trump && c2.trump) || (!c1.trump && !c2.trump))
   {
-    return c1.getValue() >= c2.getValue();
+    return c1.value >= c2.value;
   }
   else
-    return c1.isTrump();
+    return c1.trump;
 }
