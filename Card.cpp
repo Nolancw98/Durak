@@ -32,18 +32,6 @@ bool Card::isTrump()
   return trump;
 }
 
-/*
-std::less<Card>::operator (Card c1, Card c2); 
-{
-  if((c1.isTrump() && c2.isTrump()) || (!c1.isTrump() && !c2.isTrump()))
-    {
-      return c1.getValue() < c2.getValue();
-    }
-    else
-      return c2.isTrump();
-}
-*/
-
 const bool operator <(const Card &c1, const Card &c2)
 {
   if((c1.trump && c2.trump) || (!c1.trump && !c2.trump))

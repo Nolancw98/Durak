@@ -11,7 +11,7 @@ class Card
     Card(int v, char s);
     int getSuit();
     char getValue();
-    string toString();
+    string toString(); //To-Do: overload << instead
     void setTrump();
     bool isTrump();
 

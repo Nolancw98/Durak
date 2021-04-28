@@ -14,6 +14,7 @@ class Hand
     void addCards(vector<Card> c);
     Card removeCard(Card c);
     int getSize();
+    //To-Do: Add overload for [] to make life easier
   private:
     set<Card> hand;
 };
