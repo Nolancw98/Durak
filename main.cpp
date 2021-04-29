@@ -11,11 +11,11 @@ int main()
   //Testing Friend Operator
   Card c1(6, 'H');
   c1.setTrump();
-  cout << c1.toString() << endl;
+  cout << c1;
 
   Card c2(14, 'S');
   //c2.setTrump();
-  cout << c2.toString() << endl;
+  cout << c2;
 
   bool comparison = c1 < c2;
   cout << comparison << endl;
@@ -26,19 +26,19 @@ int main()
   Deck deck;
   for(int i = 0; i < deck.getSize(); i++)
   {
-    cout << deck.peekCard(i).toString() << endl;
+    cout << deck[i];
   }
 
   cout << "Size before Shuffle " << deck.getSize() << endl;
-  //cout << "First Card: " << deck.draw().toString() << endl;
-  //cout << "Last Card: " << deck.draw(0).toString() << endl;
-  //cout << "Second to Last Card: " << deck.draw(1).toString() << endl;
+  //cout << "First Card: " << deck.draw;
+  //cout << "Last Card: " << deck.draw(0);
+  //cout << "Second to Last Card: " << deck.draw(1);
   cout << endl << endl;
   deck.shuffle();
 
   for(int i = 0; i < deck.getSize(); i++)
   {
-    cout << deck.peekCard(i).toString() << endl;
+    cout << deck[i];
   }
   cout << "Size after Shuffle: " << deck.getSize() << endl;
 
@@ -47,7 +47,7 @@ int main()
 
   for(int i = 0; i < deck.getSize(); i++)
   {
-    cout << deck.peekCard(i).toString() << endl;
+    cout << deck[i];
   }
   cout << "Size after Shuffle: " << deck.getSize() << endl;
 
@@ -62,7 +62,7 @@ int main()
   //FULL DRAW
   for(int i = 0; i < 36; i++)
   {
-    cout << deck.draw().toString() << endl;
+    cout << deck.draw();
   }
   cout << "Size after full draw " << deck.getSize() << endl;
   */

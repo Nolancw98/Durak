@@ -19,6 +19,7 @@ class Deck
     char getTrump();
     int getSize();
     vector<Card> getDeck();
+    Card& operator [](const int& index);
     Card peekCard(int index); //To-Do Overload [] to make life easier
     void setTrump();
   private:

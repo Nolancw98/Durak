@@ -20,7 +20,7 @@ void Hand::addCard(Card c)
 
 void Hand::addCards(vector<Card> c)
 {
-  //hand.insert(c.begin(), c.begin() + c.size());
+  hand.insert(c.begin(), c.begin() + c.size());
 }
 
 Card Hand::removeCard(Card c)
