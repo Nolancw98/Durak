@@ -71,7 +71,7 @@ vector<Card> Deck::getDeck()
   return deck;
 }
 
-Card& Deck::operator[](const int& index)
+const Card& Deck::operator[](const int& index)
 {
   return *(deck.begin() + index);
 }

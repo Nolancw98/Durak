@@ -14,7 +14,10 @@ class Hand
     void addCards(vector<Card> c);
     Card removeCard(Card c);
     int getSize();
+    
     //To-Do: Add overload for [] to make life easier
+    friend const ostream& operator <<(ostream& outputStream, const Hand& h);
+    const Card& operator [](const int& index);
   private:
     set<Card> hand;
 };

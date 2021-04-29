@@ -27,6 +27,7 @@ int main()
   for(int i = 0; i < deck.getSize(); i++)
   {
     cout << deck[i];
+    cout << endl;
   }
 
   cout << "Size before Shuffle " << deck.getSize() << endl;
@@ -39,6 +40,7 @@ int main()
   for(int i = 0; i < deck.getSize(); i++)
   {
     cout << deck[i];
+    cout << endl;
   }
   cout << "Size after Shuffle: " << deck.getSize() << endl;
 
@@ -48,11 +50,22 @@ int main()
   for(int i = 0; i < deck.getSize(); i++)
   {
     cout << deck[i];
+    cout << endl;
   }
-  cout << "Size after Shuffle: " << deck.getSize() << endl;
+  cout << "Size after Set Trump: " << deck.getSize() << endl;
 
   Hand hand;
+  cout << hand;
   hand.addCard(deck.draw());
+  hand.addCard(deck.draw());
+  hand.addCard(deck.draw());
+  cout << hand;
+  cout << hand[0];
+  cout << endl;
+  cout << hand[2];
+  cout << endl;
+
+  cout << "Size after Draw to hand: " << deck.getSize() << endl;
   
 
   

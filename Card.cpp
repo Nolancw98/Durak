@@ -19,7 +19,9 @@ char Card::getValue()
 
 const ostream& operator <<(ostream& outputStream, const Card& c)
 {
-  outputStream << to_string(c.value) + c.suit + "\tT: " + to_string(c.trump) + "\n";
+  outputStream << to_string(c.value) + c.suit;
+  if(c.trump)
+    outputStream << "*";
   return outputStream;
 }
 
