@@ -86,7 +86,7 @@ Card Deck::peekCard(int index)
 
 void Deck::setTrump()
 {
-  Card trump = peekCard(0);
+  Card trump = deck[0];
   trumpSuit = trump.getSuit();
   
   //Set all of the trump cards
