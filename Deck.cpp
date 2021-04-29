@@ -71,10 +71,18 @@ vector<Card> Deck::getDeck()
   return deck;
 }
 
+Card& Deck::operator[](const int& index)
+{
+  return *(deck.begin() + index);
+}
+
+//DEPRECATED
+/*
 Card Deck::peekCard(int index)
 {
   return *(deck.begin() + index);
 }
+*/
 
 void Deck::setTrump()
 {

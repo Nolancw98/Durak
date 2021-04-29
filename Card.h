@@ -11,11 +11,11 @@ class Card
     Card(int v, char s);
     int getSuit();
     char getValue();
-    string toString(); //To-Do: overload << instead
+    friend const ostream& operator <<(ostream& outputStream, const Card& c);
+    string toString(); //DEPRECATED
     void setTrump();
     bool isTrump();
 
-    //std::less<Card>::operator lessThan();
     friend const bool operator <(const Card &c1, const Card &c2);
     friend const bool operator >(const Card &c1, const Card &c2);
     friend const bool operator <=(const Card &c1, const Card &c2);
