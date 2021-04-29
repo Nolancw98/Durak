@@ -5,7 +5,7 @@ Deck::Deck()
 {
   char suit[] = {'H', 'D', 'C', 'S'};
 
-  // Loop through each suit
+  // Loop through each suit 0 = H, 1 = D, 2 = C, 3 = S'
   for(int i = 0; i < 4; i++)
   {
     // Loop through the values of the cards that need to be added

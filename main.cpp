@@ -66,11 +66,11 @@ int main()
   cout << endl;
 
   cout << "Size after Draw to hand: " << deck.getSize() << endl;
-  
 
-  
-
-
+  Card toPlay = hand.removeCard(hand[0]);
+  cout << hand;
+  cout << toPlay;
+  cout << endl;
   /*
   //FULL DRAW
   for(int i = 0; i < 36; i++)
