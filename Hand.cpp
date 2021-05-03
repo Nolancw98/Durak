@@ -2,33 +2,33 @@
 
 Hand::Hand()
 {
-  set<Card> hand = {};
+  vector<Card> hand = {};
 }
 
 //To Do - make construcrtor that takes in a vector
 //For creating the inital hand
 
-set<Card> Hand::getHand()
+vector<Card> Hand::getHand()
 {
   return hand;
 }
 
 void Hand::addCard(Card c)
 {
-  hand.insert(c);
+  hand.push_back(c);
+  sort(hand.begin(), hand.end());
 }
 
-void Hand::addCards(vector<Card> c)
+void Hand::removeCard(Card card)
 {
-  hand.insert(c.begin(), c.begin() + c.size());
-}
-
-Card Hand::removeCard(Card c)
-{
-  set<Card>::iterator i;
-  i = hand.find(c);
-  hand.erase(i);
-  return *i;
+  vector<Card>::iterator i;
+  for(i = hand.begin(); i < hand.end(); i++)
+  {
+    if(*i == card)
+    {
+      hand.erase(i);
+    }
+  }
 }
 
 int Hand::getSize()
@@ -38,23 +38,14 @@ int Hand::getSize()
 
 const Card& Hand::operator [](const int& index)
 {
-  set<Card>::iterator i;
-  set<Card>::iterator toReturn;
-  int count = 0;
-  for(i = hand.begin(); i != hand.end(); i++)
-  {
-    if(count == index)
-      toReturn = i;
-    count++;
-  }
-  return *toReturn;
+  return *(hand.begin() + index);
 }
 
 const ostream& operator <<(ostream& outputStream, const Hand& h)
 {
-  set<Card>::iterator i;
-  int count = 0;
   outputStream << "Hand: [";
+  vector<Card>::const_iterator i;
+  int count = 0;
   for(i = h.hand.begin(); i != h.hand.end(); i++)
   {
     outputStream << *i;
@@ -65,5 +56,3 @@ const ostream& operator <<(ostream& outputStream, const Hand& h)
   outputStream << "]\n";
   return outputStream;
 }
-
-

@@ -24,7 +24,7 @@ void Deck::shuffle()
 {
   if(getSize() == 36)
   {
-    int shuffleCount = 7; // 7 times is totally random
+    int shuffleCount = 1; // 7 times is totally random
     for(int i = 0; i < shuffleCount; i++)
     {
       vector<Card> tempDeck;

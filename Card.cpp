@@ -42,6 +42,10 @@ bool Card::isTrump()
 {
   return trump;
 }
+const bool Card::constIsTrump()
+{
+  return trump;
+}
 
 const bool operator <(const Card &c1, const Card &c2)
 {
@@ -81,4 +85,18 @@ const bool operator >=(const Card &c1, const Card &c2)
   }
   else
     return c1.trump;
+}
+
+const bool operator ==(const Card &c1, const Card &c2)
+{
+  if(c1.value == c2.value && c1.suit == c2.suit)
+    return true;
+  return false;  
+}
+
+const bool operator !=(const Card &c1, const Card &c2)
+{
+  if(c1.value != c2.value || c1.suit != c2.suit)
+    return true;
+  return false;
 }
