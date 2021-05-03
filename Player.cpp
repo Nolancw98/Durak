@@ -2,6 +2,13 @@
 
 Player::Player()
 {
+  name = "unnamed";
+  Hand hand = Hand();
+}
+
+Player::Player(string n)
+{
+  name = n;
   Hand hand = Hand();
 }
 
@@ -10,9 +17,14 @@ Hand Player::getHand()
   return hand;
 }
 
+string Player::getName()
+{
+  return name;
+}
+
 bool Player::attack(vector<Card>& field)
 {
-  cout << "--------------START OF ATTACK--------------" << endl;
+  //cout << "--------------START OF ATTACK--------------" << endl;
   set<int> playable = {};
 
   cout << hand;
@@ -71,28 +83,35 @@ bool Player::attack(vector<Card>& field)
     hand.removeCard(chosenCard);
     cout << hand;
     cout << endl;
-    cout << "--------------END OF ATTACK--------------" << endl;
+    //cout << "--------------END OF ATTACK--------------" << endl << endl;
     return true;
   }
   cout << "You had no cards to attack with :(" << endl;
-  cout << "--------------END OF ATTACK--------------" << endl;
+  //cout << "--------------END OF ATTACK--------------" << endl << endl;
   return false;
 }
 
 bool Player::defend(vector<Card>& field)
 {
-  cout << "--------------START OF DEFENSE--------------" << endl;
+  //cout << "--------------START OF DEFENSE--------------" << endl;
   set<int> playable = {};
   Card attackingCard = field.back();
   cout << hand;
 
   for(int j = 0; j < hand.getSize(); j++)
   {
-    if(hand.getHand()[j].getSuit() == attackingCard.getSuit())
+    if(hand.getHand()[j].isTrump())
     {
-      if(hand.getHand()[j] > attackingCard)
+      playable.insert(j);
+    }
+    else
+    {
+      if(hand.getHand()[j].getSuit() == attackingCard.getSuit())
       {
-        playable.insert(j);
+        if(hand.getHand()[j] > attackingCard)
+        {
+          playable.insert(j);
+        }
       }
     }
   }
@@ -129,11 +148,11 @@ bool Player::defend(vector<Card>& field)
     field.push_back(chosenCard);
     hand.removeCard(chosenCard);
     cout << hand;
-    cout << "--------------END OF DEFENSE--------------" << endl;
+    //cout << "--------------END OF DEFENSE--------------" << endl << endl;
     return true;
   }
   cout << "You had no cards to defend with :(" << endl;
-  cout << "--------------END OF DEFENSE--------------" << endl;
+  //cout << "--------------END OF DEFENSE--------------" << endl << endl;
   return false;
 }
 
