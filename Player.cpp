@@ -3,13 +3,11 @@
 Player::Player()
 {
   name = "unnamed";
-  Hand hand = Hand();
 }
 
 Player::Player(string n)
 {
   name = n;
-  Hand hand = Hand();
 }
 
 Hand Player::getHand()
@@ -29,6 +27,7 @@ bool Player::attack(vector<Card>& field)
 
   cout << endl;
   cout << hand;
+  
   //Determine which indices are playable
   if(field.size() > 0)
   {
@@ -106,7 +105,10 @@ bool Player::defend(vector<Card>& field)
   {
     if(hand.getHand()[j].isTrump())
     {
-      playable.insert(j);
+      if(hand.getHand()[j] > attackingCard)
+      {
+        playable.insert(j);
+      }
     }
     else
     {
@@ -126,7 +128,7 @@ bool Player::defend(vector<Card>& field)
   int count = 0;
   for(p = playable.begin(); p != playable.end(); p++)
   {
-    cout << hand.getHand()[*p];
+    cout << hand[*p];
     if(count < playable.size() - 1)
     {
       cout << ", ";
@@ -148,7 +150,7 @@ bool Player::defend(vector<Card>& field)
     }while(choice >= playable.size());
 
     int indexOfHand = *next(playable.begin(),choice);
-    Card chosenCard = hand.getHand()[indexOfHand];
+    Card chosenCard = hand[indexOfHand];
     field.push_back(chosenCard);
     hand.removeCard(chosenCard);
     cout << hand;

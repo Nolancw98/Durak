@@ -14,6 +14,7 @@ Deck::Deck()
     {
       // Add a card of value j and suit from the array
       deck.push_back(Card(j, suit[i]));
+      size++;
     }
   }
 }
@@ -27,15 +28,15 @@ void Deck::shuffle()
   for(int i = 0; i < shuffleCount; i++)
   {
     vector<Card> tempDeck;
-    while (getSize() > 0)
+    while (size > 0)
     {
       srand(time(0));
       int index = (rand() % getSize());
-      tempDeck.push_back(deck[index]);
-      deck.erase(deck.begin() + index);
+      tempDeck.push_back(draw(index));
       count--;
     }
     tempDeck.swap(deck);
+    size = deck.size();
   }
 }
 
@@ -46,6 +47,7 @@ Card Deck::draw(int index)
   vector<Card>::iterator it = deck.begin();
   Card drawnCard = *(it + index);
   deck.erase(it + index);
+  size--;
   return drawnCard;
 }
 
@@ -53,6 +55,7 @@ Card Deck::draw()
 { 
   Card drawnCard = deck.back();
   deck.pop_back();
+  size--;
   return drawnCard;
 }
 
@@ -63,7 +66,7 @@ char Deck::getTrump()
 
 int Deck::getSize()
 {
-  return deck.size();
+  return size;
 }
 
 vector<Card> Deck::getDeck()

@@ -23,7 +23,7 @@ class Deck
     Card peekCard(int index); //To-Do Overload [] to make life easier
     void setTrump();
   private:
-    //int size;
+    int size = 0;
     char trumpSuit;
     vector<Card> deck;
 };

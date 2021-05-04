@@ -15,7 +15,6 @@ using namespace std;
 class Game
 {
   public:
-    Game();
     Game(Player p1, Player p2);
 
     void setPlayer1(Player p1);

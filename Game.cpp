@@ -1,16 +1,8 @@
 #include "Game.h"    
     
-Game::Game()
-{
-  Deck deck = Deck();
-  deck.shuffle();
-  deck.setTrump();
-  //play();
-}
-
 Game::Game(Player p1, Player p2)
 {
-  Deck deck = Deck();
+  //deck = Deck();
   deck.shuffle();
   deck.setTrump();
   cout << deck.getTrump() << endl;
@@ -21,6 +13,7 @@ Game::Game(Player p1, Player p2)
   //Deal
   for(int i = 0; i < minCards; i++)
   {
+    //cout << deck.getSize() << endl; //DEBUG
     player1.addToHand(deck.draw());
     player2.addToHand(deck.draw());
   }
@@ -92,11 +85,11 @@ void Game::play()
       case 3: //Check if players hands are missing cards
       { 
         
-        if(activeSet[0].getHand().getSize() < minCards && deck.getSize() > 0)
+        while(activeSet[0].getHand().getSize() < minCards && deck.getSize() > 0)
         {
           activeSet[0].addToHand(deck.draw());
         }
-        if(activeSet[1].getHand().getSize() < minCards && deck.getSize() > 0)
+        while(activeSet[1].getHand().getSize() < minCards && deck.getSize() > 0)
         {
           activeSet[1].addToHand(deck.draw());
         }
@@ -106,6 +99,8 @@ void Game::play()
       case 4: //Print who's attacking, print field, prompt next
       {
         cout << "\033c"; //Screen wipe
+        //cout << "Deck Size: " << deck.getSize() << endl;
+
         cout << activeSet[0].getName() << "'s turn to attack" << endl;
         printField(field);
 
@@ -141,8 +136,6 @@ void Game::play()
         }
         else
         {
-          cout << "Cards will be moved to discard" << endl;
-          
           promptContinue();
           state = 8;
           break;
@@ -168,18 +161,16 @@ void Game::play()
             state = -1;
             break;
           }
-          
+          state = 4;
           promptContinue();
-          state = 3;
           break;
         }
         else
         {
           cout << "Adding Cards to " << activeSet[1].getName() << "'s hand." << endl;
           toHand(field, activeSet[1]);
-          
-          promptContinue();
           state = 3;
+          promptContinue();
           break;
         }
       }
@@ -189,7 +180,7 @@ void Game::play()
         toPile(field);
         field.clear();
         swapTurn();
-        cout << deck.getTrump() << endl;
+        //cout << deck.getTrump() << endl;
         
         promptContinue();
         state = 3;
@@ -210,90 +201,13 @@ void Game::play()
       }
     }
   }
-
-
-
-  /*
-  cout << "Game Start" << endl;
-  cout << "-----------------------------------------------" << endl;
-  
-  bool playing = true;
-  while(playing)
-  {
-
-    //Check if players hands are missing cards
-    if(activeSet[0].getHand().getSize() < minCards && deck.getSize() > 0)
-    {
-      activeSet[0].addToHand(deck.draw());
-    }
-    if(activeSet[1].getHand().getSize() < minCards && deck.getSize() > 0)
-    {
-      activeSet[1].addToHand(deck.draw());
-    }
-
-    cout << activeSet[0].getName() << "'s turn to attack" << endl;
-    printField(field);
-    //Try to attack, return true if successful
-    bool attackSuccessful = activeSet[0].attack(field);
-
-    if(attackSuccessful)
-    {
-      //Check win for the player who just played a card
-      if(checkWin(activeSet[0]))
-      {
-        playing = false;
-        break;
-      }
-
-
-      printField(field);
-      //Otherwise the next player needs to defend
-      cout << activeSet[1].getName() << "'s turn to defend" << endl;
-      bool defendSuccesful = activeSet[1].defend(field);
-      if(defendSuccesful)
-      {
-        if(checkWin(activeSet[1]))
-        {
-          playing = false;
-          break;
-        }
-      }
-      else
-      {
-        toHand(field, activeSet[1]);
-      }
-
-      printField(field);
-      cout << "Would you like to attack again?" << endl;
-      int choice;
-      do{
-        cout << "0:No, 1:Yes: ";
-        cin >> choice;
-      }while(choice > 1);
-
-      if(choice)
-      {
-        continue;
-      }
-      else{
-        toPile(field);
-        swapTurn();
-      }
-    }
-    else
-    {
-      toPile(field);
-    }
-    
-  }
-  */
 }
 
 void Game::toHand(vector<Card>& field, Player& p)
 {
   for(int i = 0; i < field.size(); i++)
   {
-    p.getHand().addCard(field[i]);
+    p.addToHand(field[i]);
   }
   field.clear();
 }
