@@ -25,7 +25,6 @@ class Game
     Player getPlayer1();
     Player getPlayer2();
     vector<Player> getActiveSet();
-    vector<Player> getDormantSet();
     
     void swapTurn();
     void play();
@@ -33,11 +32,12 @@ class Game
     void toPile(vector<Card>& field);
     bool checkWin(Player p);
     void printField(vector<Card> field);
+    void promptContinue();
+    int promptYesNo();
   private:
     Player player1;
     Player player2;
     vector<Player> activeSet;
-    vector<Player> dormantSet;
     
     const int minCards = 6;
     Deck deck;

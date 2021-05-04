@@ -22,20 +22,20 @@ Deck::Deck()
 // Replace empty deck with new deck
 void Deck::shuffle()
 {
-  if(getSize() == 36)
+  int count = 35;
+  int shuffleCount = 1; // 7 times is totally random
+  for(int i = 0; i < shuffleCount; i++)
   {
-    int shuffleCount = 1; // 7 times is totally random
-    for(int i = 0; i < shuffleCount; i++)
+    vector<Card> tempDeck;
+    while (getSize() > 0)
     {
-      vector<Card> tempDeck;
-      while (getSize() > 0)
-      {
-        srand(time(0));
-        int index = (rand() % getSize());
-        tempDeck.push_back(draw(index));
-      }
-      tempDeck.swap(deck);
+      srand(time(0));
+      int index = (rand() % getSize());
+      tempDeck.push_back(deck[index]);
+      deck.erase(deck.begin() + index);
+      count--;
     }
+    tempDeck.swap(deck);
   }
 }
 

@@ -3,6 +3,7 @@
 Hand::Hand()
 {
   vector<Card> hand = {};
+  size = 0;
 }
 
 //To Do - make construcrtor that takes in a vector
@@ -17,6 +18,7 @@ void Hand::addCard(Card c)
 {
   hand.push_back(c);
   sort(hand.begin(), hand.end());
+  size++;
 }
 
 void Hand::removeCard(Card card)
@@ -29,11 +31,12 @@ void Hand::removeCard(Card card)
       hand.erase(i);
     }
   }
+  size--;
 }
 
 int Hand::getSize()
 {
-  return hand.size();
+  return size;
 }
 
 const Card& Hand::operator [](const int& index)

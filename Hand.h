@@ -21,5 +21,6 @@ class Hand
     const Card& operator [](const int& index);
   private:
     vector<Card> hand;
+    int size;
 };
 #endif
