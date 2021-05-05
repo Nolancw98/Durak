@@ -1,26 +1,11 @@
-#include "Player.h"
+/*#include "HumanPlayer.h"
 
-Player::Player()
+HumanPlayer::HumanPlayer(string n)
 {
-  name = "unnamed";
+  setName(n);
 }
 
-Player::Player(string n)
-{
-  name = n;
-}
-
-Hand Player::getHand()
-{
-  return hand;
-}
-
-string Player::getName()
-{
-  return name;
-}
-
-bool Player::attack(vector<Card>& field)
+bool HumanPlayer::attack(vector<Card>& field)
 {
   //cout << "--------------START OF ATTACK--------------" << endl;
   set<int> playable = {};
@@ -92,7 +77,7 @@ bool Player::attack(vector<Card>& field)
   return false;
 }
 
-bool Player::defend(vector<Card>& field)
+bool HumanPlayer::defend(vector<Card>& field)
 {
   //cout << "--------------START OF DEFENSE--------------" << endl;
   set<int> playable = {};
@@ -162,19 +147,4 @@ bool Player::defend(vector<Card>& field)
   //cout << "--------------END OF DEFENSE--------------" << endl << endl;
   cout << endl;
   return false;
-}
-
-void Player::addToHand(Card toAdd)
-{
-  hand.addCard(toAdd);
-}
-
-void Player::removeFromHand(Card toRemove)
-{
-  hand.removeCard(toRemove);
-}
-
-void Player::setName(string n)
-{
-  name = n;
-}
+}*/

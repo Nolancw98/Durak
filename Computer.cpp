@@ -1,41 +1,26 @@
-#include "Player.h"
+/*#include "Computer.h"
 
-Player::Player()
+Computer::Computer()
 {
-  name = "unnamed";
+  setName("Computer");
 }
 
-Player::Player(string n)
-{
-  name = n;
-}
-
-Hand Player::getHand()
-{
-  return hand;
-}
-
-string Player::getName()
-{
-  return name;
-}
-
-bool Player::attack(vector<Card>& field)
+bool Computer::attack(vector<Card>& field)
 {
   //cout << "--------------START OF ATTACK--------------" << endl;
   set<int> playable = {};
 
   cout << endl;
-  cout << name << "'s " << hand;
+  cout << getName() << "'s " << getHand();
   
   //Determine which indices are playable
   if(field.size() > 0)
   {
     for(int i = 0; i < field.size(); i++)
     {
-      for(int j = 0; j < hand.getSize(); j++)
+      for(int j = 0; j < getHand().getSize(); j++)
       {
-        if((hand.getHand()[j].getValue() == field[i].getValue()))
+        if((getHand().getHand()[j].getValue() == field[i].getValue()))
         {
           playable.insert(j);
         }
@@ -44,7 +29,7 @@ bool Player::attack(vector<Card>& field)
   }
   else
   {
-    for(int j = 0; j < hand.getSize(); j++)
+    for(int j = 0; j < getHand().getSize(); j++)
     {
       playable.insert(j);
     }
@@ -56,7 +41,7 @@ bool Player::attack(vector<Card>& field)
   int count = 0;
   for(p = playable.begin(); p != playable.end(); p++)
   {
-    cout << hand.getHand()[*p];
+    cout << getHand().getHand()[*p];
     if(count < playable.size() - 1)
     {
       cout << ", ";
@@ -69,19 +54,13 @@ bool Player::attack(vector<Card>& field)
   //Chose a playable card by using the index
   if(playable.size() > 0)
   {
-    int choice;
-    do
-    {
-      //cout << "Which card would you like to attack with?" << endl;
-      cout << "Enter index of card in Playable: ";
-      cin >> choice;
-    }while(choice >= playable.size());
+    int choice = 0; //Comptuer always picks first card!  
 
     int indexOfHand = *next(playable.begin(),choice);
-    Card chosenCard = hand.getHand()[indexOfHand];
+    Card chosenCard = getHand().getHand()[indexOfHand];
     field.push_back(chosenCard);
-    hand.removeCard(chosenCard);
-    cout << hand;
+    getHand().removeCard(chosenCard);
+    cout << getHand();
     cout << endl;
     //cout << "--------------END OF ATTACK--------------" << endl << endl;
     return true;
@@ -92,29 +71,29 @@ bool Player::attack(vector<Card>& field)
   return false;
 }
 
-bool Player::defend(vector<Card>& field)
+bool Computer::defend(vector<Card>& field)
 {
   //cout << "--------------START OF DEFENSE--------------" << endl;
   set<int> playable = {};
   Card attackingCard = field.back();
 
   cout << endl;
-  cout << name << "'s " << hand;
+  cout << getName() << "'s " << getHand();
 
-  for(int j = 0; j < hand.getSize(); j++)
+  for(int j = 0; j < getHand().getSize(); j++)
   {
-    if(hand.getHand()[j].isTrump())
+    if(getHand().getHand()[j].isTrump())
     {
-      if(hand.getHand()[j] > attackingCard)
+      if(getHand().getHand()[j] > attackingCard)
       {
         playable.insert(j);
       }
     }
     else
     {
-      if(hand.getHand()[j].getSuit() == attackingCard.getSuit())
+      if(getHand().getHand()[j].getSuit() == attackingCard.getSuit())
       {
-        if(hand.getHand()[j] > attackingCard)
+        if(getHand().getHand()[j] > attackingCard)
         {
           playable.insert(j);
         }
@@ -128,7 +107,7 @@ bool Player::defend(vector<Card>& field)
   int count = 0;
   for(p = playable.begin(); p != playable.end(); p++)
   {
-    cout << hand[*p];
+    cout << getHand()[*p];
     if(count < playable.size() - 1)
     {
       cout << ", ";
@@ -141,19 +120,13 @@ bool Player::defend(vector<Card>& field)
   //Chose a playable card by using the index
   if(playable.size() > 0)
   {
-    int choice;
-    do
-    {
-      //cout << "Which card would you like to defend with?" << endl;
-      cout << "Enter index of card in Playable: ";
-      cin >> choice;
-    }while(choice >= playable.size());
+    int choice = 0; //Comptuer always picks first card!  
 
     int indexOfHand = *next(playable.begin(),choice);
-    Card chosenCard = hand[indexOfHand];
+    Card chosenCard = getHand()[indexOfHand];
     field.push_back(chosenCard);
-    hand.removeCard(chosenCard);
-    cout << hand;
+    getHand().removeCard(chosenCard);
+    cout << getHand();
     cout << endl;
     //cout << "--------------END OF DEFENSE--------------" << endl << endl;
     return true;
@@ -162,19 +135,4 @@ bool Player::defend(vector<Card>& field)
   //cout << "--------------END OF DEFENSE--------------" << endl << endl;
   cout << endl;
   return false;
-}
-
-void Player::addToHand(Card toAdd)
-{
-  hand.addCard(toAdd);
-}
-
-void Player::removeFromHand(Card toRemove)
-{
-  hand.removeCard(toRemove);
-}
-
-void Player::setName(string n)
-{
-  name = n;
-}
+}*/

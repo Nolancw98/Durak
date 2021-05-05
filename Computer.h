@@ -1,29 +1,29 @@
-#include <iostream>
+/*#include <iostream>
 #include <set>
 #include <vector>
 #include <string>
 #include "Card.h"
 #include "Hand.h"
+#include "Player.h"
 
 
 using namespace std;
 
-#ifndef PLAYER_H
-#define PLAYER_H
-class Player
+#ifndef COMPUTER_H
+#define COMPUTER_H
+class Computer: public Player
 {
   public:
-    Player();
-    Player(string n);
+    Computer();
     Hand getHand();
     string getName();
-    bool virtual attack(vector<Card>& field);
-    bool virtual defend(vector<Card>& field);
+    bool attack(vector<Card>& field);
+    bool defend(vector<Card>& field);
     void addToHand(Card toAdd);
-    void removeFromHand(Card toRemove);
     void setName(string n);
   private:
     Hand hand;
     string name;
 };
 #endif
+*/

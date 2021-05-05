@@ -2,10 +2,12 @@
 #include <set>
 #include <vector>
 #include <string>
+#include <limits>
 #include "Card.h"
 #include "Hand.h"
 #include "Player.h"
 #include "Deck.h"
+#include "Computer.h"
 
 using namespace std;
 
@@ -15,7 +17,9 @@ using namespace std;
 class Game
 {
   public:
+    Game(Player p1);
     Game(Player p1, Player p2);
+    //Game(Player p1, Computer p2);
 
     void setPlayer1(Player p1);
     void setPlayer2(Player p2);
@@ -27,12 +31,18 @@ class Game
     
     void swapTurn();
     void play();
+    void playCPU();
     void toHand(vector<Card>& field, Player& p);
     void toPile(vector<Card>& field);
     bool checkWin(Player p);
     void printField(vector<Card> field);
     void promptContinue();
     int promptYesNo();
+
+    bool CPUATK(vector<Card>& field);
+    bool CPUDEF(vector<Card>& field);
+
+    bool verbose = false;
   private:
     Player player1;
     Player player2;
