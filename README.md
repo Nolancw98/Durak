@@ -42,6 +42,3 @@ There are a few issues with this implementation that I am aware of and arose due
 
 ## Conclusion
 Despite a few shortcomings and the time crunch, I am pleased with my implementation of Durak.  The game logic generally works without crashes and the foundation for generic card games is solid and the implementation of the Game logic with switch and case statements would allow for easy future improvements.  Additionally, my implementation goes slightly beyond the initial project proposal by allowing two human players to play against each other.  Lastly while the logic for the computer opponent is implemented at the most basic level, considerations made for human player error handling help the computer always make a legal move, even if it can’t make any real decisions.  
-
-## P.S. 
-In Game.h there is a boolean verbose that when set to true removes the clear screen escape characters and prints all of the output. This was useful to me for debugging and may be useful to you when you are reviewing.  
